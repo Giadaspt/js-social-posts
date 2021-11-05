@@ -91,12 +91,13 @@ printPost();
 function printPost(){
     
     for(let post in posts){
-        //console.log(posts[post]);
-        printAllPosts(post);
+        //preconsole.log(posts[post]);
+        const postOb = posts[post];
+        printAllPosts(postOb);
     }
 }
 
-function printAllPosts(post){
+function printAllPosts(posts){
 
     let postField= document.getElementById('container');
     
@@ -105,10 +106,10 @@ function printAllPosts(post){
         <div class="post__header">
             <div class="post-meta">                    
                 <div class="post-meta__icon">
-                    <img class="profile-pic" src="${posts.author}" alt="${posts.author}">                    
+                    <img class="profile-pic" src="${posts.author.image}" alt="${posts.author.name}">                    
                 </div>
                 <div class="post-meta__data">
-                    <div class="post-meta__author">${posts.author}</div>
+                    <div class="post-meta__author">${posts.author.name}</div>
                     <div class="post-meta__time">${posts.created}</div>
                 </div>                    
             </div>
@@ -132,8 +133,6 @@ function printAllPosts(post){
         </div>            
     </div>
     `;
-    
-
 }
 
 
