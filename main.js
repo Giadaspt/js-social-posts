@@ -37,7 +37,7 @@ const posts = [
     {
         "id": 4,
         "content": "Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.",
-        "media": "https://unsplash.it/600/400?image=24",
+        "media": "",
         "author": {
             "name": "Luca Formicola",
             "image": null
@@ -64,25 +64,26 @@ console.log("tutto l'array con gli oggetti dei post", posts);
 //creo una funzione con un ciclo dentro che prende tutto l'array
 // dalla funzione mando in stampa tutti gli id
 
-for(let index in posts){
-    
-    const post = posts[index];
+for(let index of posts){
+
+    let idUser = index.id;
+    let contentUser = index.content;
+    let mediaUser = index.media;
+    let nameUser = index.author.name;
+    let imageUser = index.author.image;
+    let likesUser = index.likes;
+    let dateUser = index.created;
         
-    const idUser = post.id;
-    const contentUser = post.content;
-    const mediaUser = post.media;
-    const nameUser = post.author.name;
-    const imageUser = post.author.image;
-    const likesUser = post.likes;
-    const dateUser = post.created;
-        
-    // console.log('id dell array',idUser);
-    // console.log('content',contentUser);
-    // console.log('foto nel post',mediaUser);
-    //console.log('nome utente',nameUser);
-    //console.log('immagine utente',imageUser);
-    // console.log('like',likesUser);
-    // console.log('data del post',dateUser);
+    console.log('id dell array',idUser);
+    console.log('content',contentUser);
+    console.log('foto nel post',mediaUser);
+    console.log('nome utente',nameUser);
+    console.log('immagine utente',imageUser);
+    console.log('like',likesUser);
+    console.log('data del post',dateUser);
+
+   imageUser = changePic();
+
 }
 
 document.getElementById('container').innerHTML = '';
@@ -94,6 +95,7 @@ function printPost(){
         //preconsole.log(posts[post]);
         const postOb = posts[post];
         printAllPosts(postOb);
+
     }
 }
 
@@ -110,7 +112,7 @@ function printAllPosts(posts){
                 </div>
                 <div class="post-meta__data">
                     <div class="post-meta__author">${posts.author.name}</div>
-                    <div class="post-meta__time">${posts.created}</div>
+                    <div class="post-meta__time">${newDate()} mesi fa</div>
                 </div>                    
             </div>
         </div>
@@ -133,6 +135,68 @@ function printAllPosts(posts){
         </div>            
     </div>
     `;
+
+
+
+
+    
+}
+
+newDate();
+console.log('nuova data mese',newDate());
+let months = 0;
+
+function newDate(months){
+    let count = 0;
+    const d = new Date();
+    let month = d.getMonth();
+    // while(month = months.length){
+    //     console.log(months);
+    //     console.log(count++);
+    // }
+
+    // for(let i = 0; i < month.length; i++){
+        
+        
+    // }
+
+    console.log(months);
+    return month;
 }
 
 
+console.log('cambio immagine',changePic());
+
+function changePic(posts){
+
+    for(let i in posts){
+        let post = posts[i];
+
+        if (post.hasOwnPropery(i)){
+            console.log(i+ '-->' + post[i]);
+        }
+        if(posts.media === '' && posts.author.image === ''){
+            posts.media = Math.random("https://source.unsplash.com/daily") ;
+            posts.author.image = "https://source.unsplash.com/user/erondu/daily";
+            }
+        }
+
+    //if(posts.media === '' && posts.author.image === ''){
+    //     posts.media = "https://source.unsplash.com/daily";
+    //     posts.author.image = "https://source.unsplash.com/user/erondu/daily";
+    // }
+
+}
+
+getLikes
+
+document.querySelector('.likes__cta').addEventListener('click', getLikes);
+
+function getLikes(likes , like){
+
+    document.querySelector('js-likes-counter');  
+
+    for(let i = 0; i < likes.length; i++){
+        like++;
+    }
+}
